@@ -8,8 +8,8 @@ const home = (req, res) => {
         <h1>Welcome to the Harry Potter API!</h1>
         <p>Explore characters, spells, and more.</p>
         <ul>
-          <li><a href="/characters">Get all Harry Potter characters.</a></li>
-          <li><a href="/spells">Get a list of magical spells.</a></li>
+          <li><a href="/characters">/characters endpoint</a></li>
+          <li><a href="/spells">/spells endpoint</a></li>
         </ul>
       </body>
     </html>
