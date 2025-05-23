@@ -7,6 +7,7 @@ const {
   updateCharacter,
   deleteCharacter,
 } = require("../controllers/charactersController");
+const { characterSchema } = require("../utilities/charactersValidation");
 
 // Route to get all characters
 router.get("/", getCharacters);
@@ -15,10 +16,29 @@ router.get("/", getCharacters);
 router.get("/:id", getCharacterById);
 
 // Route to create a character
-router.post("/", createCharacter);
+router.post(
+  "/",
+  (req, res, next) => {
+    const { error } = characterSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message });
+    }
+  },
+  createCharacter
+);
 
 // Route to update a character
-router.put("/:id", updateCharacter);
+router.put(
+  "/:id",
+  (req, res, next) => {
+    const { error } = characterSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message });
+    }
+    next();
+  },
+  updateCharacter
+);
 
 // Route to delete a character
 router.delete("/:id", deleteCharacter);

@@ -7,6 +7,7 @@ const {
   updateSpell,
   deleteSpell,
 } = require("../controllers/spellsController");
+const { spellSchema } = require("../utilities/spellsValidation");
 
 // Route to get all spells
 router.get("/", getSpells);
@@ -15,10 +16,28 @@ router.get("/", getSpells);
 router.get("/:id", getSpellById);
 
 // Route to create a new spell
-router.post("/", createSpell);
+router.post(
+  "/",
+  (req, res, next) => {
+    const { error } = spellSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message });
+    }
+  },
+  createSpell
+);
 
 //Route to update a spell
-router.put("/:id", updateSpell);
+router.put(
+  "/:id",
+  (req, res, next) => {
+    const { error } = spellSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message });
+    }
+  },
+  updateSpell
+);
 
 //Route to delete a spell
 router.delete("/:id", deleteSpell);

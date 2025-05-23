@@ -11,6 +11,8 @@ const home = (req, res) => {
           <li><a href="/characters">/characters endpoint</a></li>
           <li><a href="/spells">/spells endpoint</a></li>
         </ul>
+
+        <a href="/api-docs">Documentation</a>
       </body>
     </html>
   `);

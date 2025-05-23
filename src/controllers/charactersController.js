@@ -26,22 +26,24 @@ const getCharacterById = async (req, res) => {
 // Create a new character
 const createCharacter = async (req, res) => {
   try {
-    const { name, house, blood_status, wand, patronus } = req.body;
-
-    if (!wand || !wand.wood || !wand.core || !wand.length) {
-      return res.status(400).json({ message: "Invalid wand data" });
-    }
+    const {
+      name,
+      house,
+      blood_status,
+      wand,
+      patronus,
+      birth_year,
+      occupation,
+    } = req.body;
 
     const newCharacter = new Characters({
       name,
       house,
       blood_status,
-      wand: {
-        wood: wand.wood,
-        core: wand.core,
-        length: wand.length,
-      },
+      wand,
       patronus,
+      birth_year,
+      occupation,
     });
 
     await newCharacter.save();
