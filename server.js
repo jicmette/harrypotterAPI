@@ -12,7 +12,7 @@ connectDataBase();
 const app = express();
 app.use(express.json());
 
-const port = process.env.PORT || 8080;
+const port = process.env.LOCAL_HOST || 8080;
 
 // Middleware to enable Cross-Origin Resource Sharing (CORS)
 // Allows the API to handle requests from different origins

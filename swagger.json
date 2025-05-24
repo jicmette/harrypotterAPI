@@ -5,7 +5,6 @@
     "title": "Harry Potter API",
     "description": "API to explore Harry Potter characters and spells"
   },
-  "host": "localhost:8080",
   "basePath": "/",
   "schemes": [
     "http",

@@ -6,7 +6,10 @@ const doc = {
     title: "Harry Potter API",
     description: "API to explore Harry Potter characters and spells",
   },
-  host: "localhost:8080",
+  host:
+    process.env.NODE_ENV === "production"
+      ? process.env.RENDER_HOST
+      : process.env.LOCAL_HOST,
   schemes: ["http", "https"],
 };
 
